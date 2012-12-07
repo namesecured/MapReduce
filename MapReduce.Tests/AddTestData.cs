@@ -9,5 +9,9 @@ namespace MapReduce.Tests
     [TestFixture]
     public class AddTestData
     {
+        public void AddSessions()
+        { 
+
+        }
     }
 }

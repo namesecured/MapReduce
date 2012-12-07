@@ -1,5 +1,4 @@
-﻿using System;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 
 namespace MapReduce
 {
@@ -7,16 +6,21 @@ namespace MapReduce
     {
         private const string ConnectionString = "mongodb://localhost/MapReduce";
 
-        private MongoDatabase database;
+        private MongoClient client;
+        private MongoServer server;
 
         public void Connect()
         {
-            throw new NotImplementedException();
+            this.client = new MongoClient(ConnectionString);
+            this.server = this.client.GetServer();
         }
 
         public void Disconnect()
         {
-            throw new NotImplementedException();
+            if (this.server.State != MongoServerState.Disconnected)
+            {
+                this.server.Disconnect();
+            }
         }
     }
 }

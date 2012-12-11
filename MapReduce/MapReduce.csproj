@@ -60,6 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="SessionRepository.cs" />
+    <Compile Include="StatisticItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -9,12 +9,12 @@ namespace MapReduce
     {
         public Session(DateTime startDate, DateTime endDate)
         {
-            this.SessionId = Guid.NewGuid();
+            this.SessionId = Guid.NewGuid().ToString();
             this.StartDate = startDate;
             this.EndDate = endDate;
         }
 
-        public Guid SessionId { get; private set; }
+        public string SessionId { get; private set; }
 
         public DateTime StartDate { get; private set; }
 

@@ -1,7 +1,9 @@
-﻿using MongoRepository;
+﻿using System.Collections.Generic;
+using System.Linq;
+using MongoRepository;
 
 namespace MapReduce
-{    
+{
     public class SessionRepository : ISessionRepository
     {
         private const string ConnectionString = "mongodb://localhost/MapReduce";
@@ -12,6 +14,11 @@ namespace MapReduce
         public void Add(Session session)
         {
             this.Storage.Add(session);
+        }
+
+        public IEnumerable<Session> Get()
+        {
+            return this.Storage.All().ToList();
         }
     }
 }

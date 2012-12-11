@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace MapReduce.Tests
 {
-    [TestFixture, Ignore]
+    [TestFixture]
     public class AddTestData
     {
         private Random hour = new Random(23);
@@ -13,20 +13,35 @@ namespace MapReduce.Tests
         private const int minimumDuration = 1;
         private const int maximumDuration = 360;
 
-        [Test]
+        [Test, Ignore]
         public void GenerateSessions()
         {
+            var startDate = DateTime.Parse("2011.01.01");
+            var endDate = DateTime.Parse("2012.12.31");
+            int maxSessions = 50;
+
+            this.GenerateSessions(startDate, endDate, maxSessions);
+        }
+
+        private void GenerateSessions(DateTime startDate, DateTime endDate, int maxSessions)
+        {
+            var date = startDate;
+
             ISessionRepository repository = new SessionRepository();
-            for (int i = 0; i < 50; i++)
+            while (date <= endDate)
             {
-                var session = this.GenerateSession();
-                repository.Add(session);
+                for (int i = 0; i < maxSessions; i++)
+                {
+                    var session = this.GenerateSession(date);
+                    repository.Add(session);
+                }
+                date = date.AddDays(1);
             }
         }
 
-        private Session GenerateSession()
+        private Session GenerateSession(DateTime date)
         {
-            var startDate = DateTime.Parse("2012.12.07");
+            var startDate = date;
 
             var h = hour.Next(0, 22);
             var m = minute.Next(0, 58);
@@ -35,7 +50,7 @@ namespace MapReduce.Tests
 
             startDate = startDate.Add(t);
 
-            var endDate = DateTime.Parse("2012.12.07");
+            var endDate = date;
 
             h = hour.Next(h + 1, 23);
             m = minute.Next(m + 1, 59);

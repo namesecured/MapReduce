@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using MongoRepository;
 
 namespace MapReduce
@@ -19,6 +21,11 @@ namespace MapReduce
         public IEnumerable<Session> Get()
         {
             return this.Storage.All().ToList();
+        }
+
+        public IEnumerable<Session> Get(Expression<Func<Session, bool>> func)
+        {
+            return this.Storage.All(func).ToList();
         }
     }
 }

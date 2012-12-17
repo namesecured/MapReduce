@@ -60,12 +60,12 @@
     <Compile Include="AggregationTests.cs" />
     <Compile Include="GetStatisticTest.cs" />
     <Compile Include="Integration.cs" />
-    <Compile Include="JavaScript.Designer.cs">
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scipts.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JavaScript.resx</DependentUpon>
+      <DependentUpon>Scipts.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MapReduce\MapReduce.csproj">
@@ -78,13 +78,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="JavaScript.resx">
+    <EmbeddedResource Include="Scipts.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>JavaScript.Designer.cs</LastGenOutput>
+      <LastGenOutput>Scipts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="MapReduce.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
